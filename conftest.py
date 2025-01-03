@@ -84,7 +84,7 @@ def dnsserver(tmp_path_factory):
 
     if dns_proc:
         dns_proc.terminate()
-        raise Exception(str(dns_proc.stderr.readlines()))
+        raise Exception(str(dns_proc.stdout.readlines()))
 
 
 @pytest.fixture
