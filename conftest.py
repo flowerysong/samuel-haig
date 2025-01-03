@@ -73,7 +73,7 @@ def dnsserver(tmp_path_factory):
     devnull = open(os.devnull, 'w')
     dns_proc = None
     try:
-        dns_proc = subprocess.Popen(['yadifad', '-c', conf], stdout=devnull, stderr=devnull)
+        dns_proc = subprocess.Popen(['yadifad', '-c', conf], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     except OSError as e:
         if e.errno != errno.ENOENT:
             raise
@@ -84,6 +84,7 @@ def dnsserver(tmp_path_factory):
 
     if dns_proc:
         dns_proc.terminate()
+        raise Exception(str(dns_proc.stderr.readlines()))
 
 
 @pytest.fixture

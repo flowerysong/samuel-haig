@@ -6,4 +6,4 @@ def test_1(dnsserver):
     r.port = dnsserver['port']
 
     a = r.resolve('ipv4.example.com')
-    print(a)
+    #raise Exception(str(list(a)))
