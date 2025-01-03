@@ -20,7 +20,7 @@ jobs:
         run: sudo apt install yadifa
 
       - name: yadifa
-        run: yadifad --version
+        run: yadifad -c yadifad.conf
 
       - name: pytest
         run: pytest -vv
