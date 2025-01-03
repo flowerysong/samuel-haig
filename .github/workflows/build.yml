@@ -1,0 +1,23 @@
+name: build
+on:
+  push:
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out
+        uses: actions/checkout@v4
+
+      - name: pip install
+        run: sudo pip install pytest dnspython
+
+      - name: apt update
+        run: sudo apt update
+
+      - name: apt install
+        run: sudo apt install yadifa
+
+      - name: pytest
+        run: pytest -vv
