@@ -19,5 +19,8 @@ jobs:
       - name: apt install
         run: sudo apt install yadifa
 
+      - name: yadifa
+        run: yadifad --version
+
       - name: pytest
         run: pytest -vv
